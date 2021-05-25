@@ -1,5 +1,8 @@
-import React from "react";
+import React,{ ReactElement, useState, FormEvent }  from "react";
+import api from '../services/api' //chamando axios.create
+import { useHistory } from 'react-router-dom';
 import styled from "styled-components";
+
 
 const Label = styled.label`
   font-weight: bold;
@@ -24,32 +27,68 @@ const Button = styled.button`
   border-radius: 10px;
 `;
 
+
+
+
 function changeCityfunction(e) {}
 
 function FormVoluntario() {
+
+          //=============>> axios conection
+
+          const history = useHistory()
+          const [apelido, setApelido] = useState('');
+        
+          
+          function handleCreateClass() {
+            
+           
+                     
+              
+            
+            api.post('voluntarios', {
+              
+            apelido,
+          
+            }).then(() => {
+              alert('Cadastro realizado com sucesso!');
+          
+              history.push('/');
+            }).catch(() => {
+              alert('Erro no cadastro.');
+            });
+          
+            
+          }
+  
+
   return (
     <form
-      onSubmit={(e) => {
-        e.preventDefault();
-      }}
+      onSubmit={handleCreateClass}
     >
-      <Label htmlFor="name">Nome:</Label>
-      <Input placeholder="Seu Nome" id="name" required />
+      <Label htmlFor="apelido">Nome:</Label>
+      <Input 
+      placeholder="Seu Nome" 
+      id="apelido" required 
+      //value="apelido"
+      onChange={(e) => { setApelido(e.target.value) }}
+
+      />
       <Label htmlFor="email">E-mail:</Label>
-      <Input placeholder="E-mail de acesso" id="email" type="email" required />
+      <Input placeholder="E-mail de acesso" id="email" type="email" />
       <Label htmlFor="password">Senha:</Label>
       <Input
         placeholder="Nova senha de acesso"
         id="password"
         type="password"
-        required
+        
       />
       <Label htmlFor="confirmPassword">Confirmar senha:</Label>
       <Input
         placeholder="Confirmar nova senha"
         id="confirmPassword"
         type="password"
-        required
+     
       />
       <Label htmlFor="city">Cidade:</Label>
       <div className="dropdown" open="">
@@ -62,7 +101,7 @@ function FormVoluntario() {
           type="text"
           autocomplete="false"
           onChange={changeCityfunction()}
-          required
+          
         />
       </div>
       <Button>Cadastrar</Button>
