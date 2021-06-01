@@ -5,7 +5,6 @@ import Nav from 'react-bootstrap/Nav';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import { Link } from 'react-router-dom';
-import { Container } from 'react-bootstrap';
 
 const navbarStyles = {
     backgroundColor: "#F0F5F7",
@@ -16,15 +15,15 @@ const formStyles = {
     minWidth: "300px",
 };
 
-const conteinerStyles = {
-}
-
 const SearchBar = () => {
     return (
         <>
             <Navbar style={navbarStyles} expand="lg">
-                <Navbar.Brand href="#home">
+                <Navbar.Brand>
+                    <Link to="/">
+                   
                 <img src={logo} width="40" height="40" className="d-inline-block align-top" alt="Global ORG" />
+                    </Link>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -36,8 +35,8 @@ const SearchBar = () => {
 
                     <Nav>
                             <Nav.Link>Nossas plataformas</Nav.Link>
+                            <Nav.Link href="/cadastro/voluntario">Quero ser voluntário</Nav.Link>
                             <Nav.Link>Quem somos</Nav.Link>
-                            <Nav.Link>Quero ser voluntário</Nav.Link>
                             <Nav.Link>Para empresas</Nav.Link>
                             <Nav.Link>Sou uma ONG</Nav.Link>
                             <Nav.Link>Entrar</Nav.Link>

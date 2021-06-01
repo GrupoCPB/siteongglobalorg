@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import CadastroOng from './pages/CadastroOng';
 import CadastroVaga from './pages/CadastroVaga';
-import CadastroVoluntario from './pages/CadastroVoluntario';
+import CadastroVoluntario from './pages/Cadastro/Voluntario/index';
 import PerfilOng from './pages/PerfilOng';
 import PerfilVoluntario from './pages/PerfilVoluntario';
 import LoginOng from './pages/LoginOng';
